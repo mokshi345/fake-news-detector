@@ -8,11 +8,8 @@ from transformers import DistilBertTokenizerFast, DistilBertForSequenceClassific
 
 @st.cache_resource(show_spinner=False)
 def load_model():
-    tokenizer = DistilBertTokenizerFast.from_pretrained("distilbert-base-uncased")
-    model = DistilBertForSequenceClassification.from_pretrained(
-        "distilbert-base-uncased", num_labels=2
-    )
-    model.load_state_dict(torch.load("distilbert_fakenews.pt", map_location="cpu"))
+    tokenizer = DistilBertTokenizerFast.from_pretrained("mokshi4/fake-news-detector")
+    model = DistilBertForSequenceClassification.from_pretrained("mokshi4/fake-news-detector")
     model.eval()
     return tokenizer, model
 

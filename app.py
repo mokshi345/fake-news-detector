@@ -8,8 +8,12 @@ from transformers import DistilBertTokenizerFast, DistilBertForSequenceClassific
 
 @st.cache_resource(show_spinner=False)
 def load_model():
+    # pull tokenizer + model weights from your HF repo
     tokenizer = DistilBertTokenizerFast.from_pretrained("mokshi4/fake-news-detector")
-    model = DistilBertForSequenceClassification.from_pretrained("mokshi4/fake-news-detector")
+    model = DistilBertForSequenceClassification.from_pretrained(
+        "mokshi4/fake-news-detector",
+        num_labels=2
+    )
     model.eval()
     return tokenizer, model
 
@@ -67,9 +71,7 @@ with col1:
             st.warning("Please enter some text first.")
         else:
             # Tokenize & predict
-            inputs = tokenizer(
-                news, return_tensors="pt", truncation=True, padding=True
-            )
+            inputs = tokenizer(news, return_tensors="pt", truncation=True, padding=True)
             outputs = model(**inputs)
             probs = torch.softmax(outputs.logits, dim=1)[0]
             label_id = torch.argmax(probs).item()
@@ -115,4 +117,3 @@ st.markdown(
     "Demo © 2025 Mokshitha</small>",
     unsafe_allow_html=True,
 )
-

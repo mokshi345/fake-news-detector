@@ -1,5 +1,6 @@
+--find-links https://download.pytorch.org/whl/cpu
 streamlit==1.25.0
 transformers==4.30.2
-torch==1.13.1
+torch==2.0.1+cpu
 pandas
 scikit-learn

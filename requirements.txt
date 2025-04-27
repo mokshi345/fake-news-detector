@@ -1,6 +1,9 @@
-streamlit==1.25.0           # your original pin is fine
-transformers==4.30.2
-torch==2.2.1                # or keep 2.0.0 and pin Python 3.10
-tokenizers==0.15.2
-pandas
-scikit-learn
+streamlit==1.31.0
+
+# ML stack – all have 3.12 wheels
+torch==2.2.1+cpu           --extra-index-url https://download.pytorch.org/whl/cpu
+transformers==4.39.3       # pulls tokenizers 0.15.x automatically
+scikit-learn==1.6.1
+pandas==2.2.3
+
+# everything else can stay un-pinned unless you need exact versions

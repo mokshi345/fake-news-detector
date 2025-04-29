@@ -7,11 +7,13 @@ import torch
 from transformers import DistilBertTokenizerFast, DistilBertForSequenceClassification
 
 # ── Helpers ────────────────────────────────────────────────────────────────────
+
+
 @st.cache_resource(show_spinner=False)
 def load_model():
-    tokenizer = DistilBertTokenizerFast.from_pretrained("./tokenizer")
+    tokenizer = DistilBertTokenizerFast.from_pretrained("mokshi4/fake-news-detector")
     model = DistilBertForSequenceClassification.from_pretrained(
-        "./",
+        "mokshi4/fake-news-detector",
         num_labels=2
     )
     model.eval()

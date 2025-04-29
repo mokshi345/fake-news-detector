@@ -1,8 +1,8 @@
---extra-index-url https://download.pytorch.org/whl/cpu
-
-streamlit==1.44.1
-transformers>=4.51.0
-tokenizers>=0.21.0
-torch>=2.7.0          # latest CPU wheel
-pandas>=2.2
-scikit-learn>=1.6
+streamlit==1.31.0
+torch==2.2.1           # or 2.2.0 if you prefer
+transformers==4.39.3   # last version that still supports DistilBERT nicely
+tokenizers==0.19.0     # pre-built wheel for py312 so no Rust needed
+pillow==10.3.0
+numpy==1.26.4
+scikit-learn==1.4.2
+pandas==2.2.2

@@ -1,3 +1,5 @@
+import os
+os.environ["STREAMLIT_WATCHER_TYPE"] = "none"
 import io
 import streamlit as st
 import pandas as pd

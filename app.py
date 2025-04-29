@@ -7,17 +7,16 @@ import torch
 from transformers import DistilBertTokenizerFast, DistilBertForSequenceClassification
 
 # ── Helpers ────────────────────────────────────────────────────────────────────
-
 @st.cache_resource(show_spinner=False)
 def load_model():
-    # pull tokenizer + model weights from your HF repo
-    tokenizer = DistilBertTokenizerFast.from_pretrained("mokshi4/fake-news-detector")
+    tokenizer = DistilBertTokenizerFast.from_pretrained("./tokenizer")
     model = DistilBertForSequenceClassification.from_pretrained(
-        "mokshi4/fake-news-detector",
+        "./",
         num_labels=2
     )
     model.eval()
     return tokenizer, model
+
 
 def reset_text():
     """Callback to clear the text area."""
